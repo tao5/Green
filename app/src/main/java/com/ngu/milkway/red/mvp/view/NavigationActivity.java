@@ -1,18 +1,16 @@
-package com.ngu.milkway.red.mvp.view.home.impl;
+package com.ngu.milkway.red.mvp.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import com.ngu.milkway.red.R;
-import com.ngu.milkway.red.mvp.model.HomeNavStatus;
-import com.ngu.milkway.red.mvp.model.NavigateStatus;
 import com.ngu.milkway.red.mvp.view.BaseActivity;
-import com.ngu.milkway.red.mvp.view.home.INavigationView;
+import com.ngu.milkway.red.mvp.view.NavigationView;
+import com.ngu.milkway.red.mvp.view.home.impl.HomeFragment;
 import com.ngu.milkway.red.mvp.view.setting.impl.SettingFragment;
 import com.ngu.milkway.red.utils.ActivityUtils;
 
@@ -20,22 +18,16 @@ import com.ngu.milkway.red.utils.ActivityUtils;
  * Created by xt on 16/4/29.
  */
 public abstract class NavigationActivity extends BaseActivity implements
-        NavigationView.OnNavigationItemSelectedListener, INavigationView {
-
-    //protected NavigateStatus navigateStatus;
+        android.support.design.widget.NavigationView.OnNavigationItemSelectedListener, NavigationView {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //navigateStatus = new HomeNavStatus();
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        //navigateStatus.onNavigationItemSelected(id,this);
-
 
         if (id == R.id.nav_camera) {
             HomeFragment homeFragment = null;//(HomeFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);

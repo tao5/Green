@@ -1,27 +1,55 @@
 package com.ngu.milkway.red.mvp.view.home.impl;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.ngu.milkway.red.R;
-import com.ngu.milkway.red.mvp.presenter.home.IHomePresenter;
+import com.ngu.milkway.red.adapter.FlowAdapter;
+import com.ngu.milkway.red.mvp.presenter.home.HomePresenter;
 import com.ngu.milkway.red.mvp.view.BaseFragment;
-import com.ngu.milkway.red.mvp.view.home.IHomeView;
+import com.ngu.milkway.red.mvp.view.home.HomeView;
+
+import java.util.List;
+
+import static com.ngu.milkway.red.utils.Red.checkNotNull;
 
 /**
  * Created by xt on 16/4/29.
  */
-public class HomeFragment extends BaseFragment implements IHomeView {
+public class HomeFragment extends BaseFragment implements HomeView {
 
-    @Nullable
+    private RecyclerView imageFlow;
+
+    private HomePresenter mPresenter;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fr_home, container, false);
-        return view;
+    protected int setResource() {
+        return R.layout.fr_home;
+    }
+
+    @Override
+    protected void initFragment() {
+        imageFlow = (RecyclerView) view.findViewById(R.id.rv_home_image_flow);
+        imageFlow.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+        mPresenter.prepareData();
+    }
+
+    @Override
+    public void setPresenter(HomePresenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.start();
+    }
+
+    @Override
+    public void showImageFlow(List<String> urls) {
+        imageFlow.setAdapter(new FlowAdapter(urls));
     }
 
     @Override
@@ -39,14 +67,15 @@ public class HomeFragment extends BaseFragment implements IHomeView {
 
     }
 
+
     @Override
     public void closeFab() {
 
     }
 
     @Override
-    public void setPresenter(IHomePresenter presenter) {
-
+    public void showSnackbar(String info) {
+        setSnackbar(info, Snackbar.LENGTH_LONG);
     }
 
 }

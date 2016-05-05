@@ -24,6 +24,16 @@ public class SettingFragment extends BaseFragment implements ISettingView {
     }
 
     @Override
+    protected int setResource() {
+        return R.layout.fr_setting;
+    }
+
+    @Override
+    protected void initFragment() {
+
+    }
+
+    @Override
     public void setPresenter(BasePresenter presenter) {
 
     }
