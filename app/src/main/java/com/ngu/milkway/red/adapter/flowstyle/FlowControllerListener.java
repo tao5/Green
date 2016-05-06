@@ -1,4 +1,4 @@
-package com.ngu.milkway.red.adapter;
+package com.ngu.milkway.red.adapter.flowstyle;
 
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
@@ -14,8 +14,8 @@ import com.facebook.imagepipeline.image.QualityInfo;
  */
 public class FlowControllerListener extends BaseControllerListener<ImageInfo> {
 
-    SimpleDraweeView pic;
-    Uri uri;
+    private SimpleDraweeView pic;
+    private Uri uri;
 
     public FlowControllerListener(SimpleDraweeView pic, Uri uri) {
         this.pic = pic;

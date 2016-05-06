@@ -1,4 +1,4 @@
-package com.ngu.milkway.red.adapter;
+package com.ngu.milkway.red.adapter.flowstyle;
 
 import android.net.Uri;
 

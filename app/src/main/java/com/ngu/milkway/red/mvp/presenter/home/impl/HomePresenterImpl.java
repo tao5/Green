@@ -55,8 +55,8 @@ public class HomePresenterImpl implements HomePresenter {
                         return meiziDetail.getUrl();
                     }
                 })
-                .retry(2)
                 .toList()
+                .retry(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<String>>() {

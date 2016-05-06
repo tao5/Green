@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.ngu.milkway.red.R;
+import com.ngu.milkway.red.adapter.flowstyle.FlowStyleContext;
+import com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory;
 
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
     @Override
     public void onBindViewHolder(FlowHolder holder, int position) {
         Uri uri = Uri.parse(urls.get(position));
-        FlowStyleFactory.createFlowStyle(holder.draweeView, uri, flowStyle).setFlowStyle();
+        // FlowStyleFactory.createFlowStyle(holder.draweeView, uri, flowStyle).setFlowStyle();
+        new FlowStyleContext(holder.draweeView, uri, flowStyle).setFlowStyle();
     }
 
     public void setFlowStyle(int flowStyle) {

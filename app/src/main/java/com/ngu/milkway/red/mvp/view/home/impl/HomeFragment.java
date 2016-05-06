@@ -14,9 +14,9 @@ import com.ngu.milkway.red.mvp.view.home.HomeView;
 
 import java.util.List;
 
-import static com.ngu.milkway.red.adapter.FlowStyleFactory.FLOW_STYLE_HEIGHT;
-import static com.ngu.milkway.red.adapter.FlowStyleFactory.FLOW_STYLE_MIX;
-import static com.ngu.milkway.red.adapter.FlowStyleFactory.FLOW_STYLE_WIDTH;
+import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_HEIGHT;
+import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_MIX;
+import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_WIDTH;
 import static com.ngu.milkway.red.utils.Red.checkNotNull;
 
 /**
@@ -71,6 +71,9 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (mFlowAdapter == null) {
+            return false;
+        }
         int id = item.getItemId();
         if (id == R.id.home_height) {
             mFlowAdapter.setFlowStyle(FLOW_STYLE_HEIGHT);

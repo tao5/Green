@@ -28,6 +28,10 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    /**
+     * config XML layout resource for fragment
+     * @return
+     */
     protected abstract int setResource();
 
     protected abstract void initFragment();
@@ -43,7 +47,7 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * config menu layout resource
-     * @return
+     * @return layout resource
      */
     protected int setMenuResource() {
         return R.menu.home;
