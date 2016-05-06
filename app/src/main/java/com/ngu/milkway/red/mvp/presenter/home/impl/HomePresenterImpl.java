@@ -3,6 +3,7 @@ package com.ngu.milkway.red.mvp.presenter.home.impl;
 import com.ngu.milkway.red.GreenApi;
 import com.ngu.milkway.red.GreenRetrofit;
 import com.ngu.milkway.red.mvp.model.bean.Meizi;
+import com.ngu.milkway.red.mvp.presenter.home.HomePresenter;
 import com.ngu.milkway.red.mvp.view.home.HomeView;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import static com.ngu.milkway.red.utils.Red.checkNotNull;
 /**
  * Created by xt on 16/4/29.
  */
-public class HomePresenterImpl implements com.ngu.milkway.red.mvp.presenter.home.HomePresenter {
+public class HomePresenterImpl implements HomePresenter {
 
     private HomeView mHomeView;
 
@@ -54,6 +55,7 @@ public class HomePresenterImpl implements com.ngu.milkway.red.mvp.presenter.home
                         return meiziDetail.getUrl();
                     }
                 })
+                .retry(2)
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

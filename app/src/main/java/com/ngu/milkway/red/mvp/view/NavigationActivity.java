@@ -8,8 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import com.ngu.milkway.red.R;
-import com.ngu.milkway.red.mvp.view.BaseActivity;
-import com.ngu.milkway.red.mvp.view.NavigationView;
 import com.ngu.milkway.red.mvp.view.home.impl.HomeFragment;
 import com.ngu.milkway.red.mvp.view.setting.impl.SettingFragment;
 import com.ngu.milkway.red.utils.ActivityUtils;

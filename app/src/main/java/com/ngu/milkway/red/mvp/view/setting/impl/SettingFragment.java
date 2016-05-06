@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.mvp.presenter.BasePresenter;
 import com.ngu.milkway.red.mvp.view.BaseFragment;
-import com.ngu.milkway.red.mvp.view.setting.ISettingView;
+import com.ngu.milkway.red.mvp.view.setting.SettingView;
 
 /**
  * Created by xt on 16/4/29.
  */
-public class SettingFragment extends BaseFragment implements ISettingView {
+public class SettingFragment extends BaseFragment implements SettingView {
 
     @Nullable
     @Override
