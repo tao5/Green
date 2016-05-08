@@ -14,7 +14,7 @@ public class ActivityUtils {
                                       Fragment fragment, int containerViewId) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
-        fragmentManager.beginTransaction().add(containerViewId, fragment).commit();
+        fragmentManager.beginTransaction().replace(containerViewId, fragment).commit();
     }
 
 }
