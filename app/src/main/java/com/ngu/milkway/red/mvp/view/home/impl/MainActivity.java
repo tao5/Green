@@ -8,7 +8,7 @@ public class MainActivity extends NavigationActivity {
 
     @Override
     protected int setContentView() {
-        return R.layout.activity_main;
+        return R.layout.activity_main_normal;
     }
 
     @Override

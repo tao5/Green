@@ -8,25 +8,9 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <ViewFlipper
-        android:id="@+id/drawer_content_view_flipper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <include
-            android:id="@+id/drawer_content_head_collapsing"
-            layout="@layout/drawer_content_collapsing"/>
-
-        <include
-            android:id="@+id/drawer_content_head_normal"
-            layout="@layout/drawer_content_normal" />
-
-    </ViewFlipper>
-
-    <!--<include
-        layout="@layout/drawer_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
+    <include
+        android:id="@+id/drawer_content_head_normal"
+        layout="@layout/drawer_content_normal" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

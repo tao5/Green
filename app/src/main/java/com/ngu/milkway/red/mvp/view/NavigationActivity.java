@@ -1,7 +1,5 @@
 package com.ngu.milkway.red.mvp.view;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -28,13 +26,13 @@ public abstract class NavigationActivity extends BaseActivity implements
     private Fragment mCurrentFragment;
     private DrawerLayout mDrawer;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+    protected static final int HEAD_NORMAL = 0;
+    protected static final int HEAD_COLLAPSING = 1;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    @Override
+    protected void initActivity() {
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.drawer_content_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,14 +41,42 @@ public abstract class NavigationActivity extends BaseActivity implements
             }
         });
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        android.support.design.widget.NavigationView navigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
+//        View normalHead = findViewById(R.id.drawer_content_head_normal);
+//        View collapsingHead = findViewById(R.id.drawer_content_head_collapsing);
+//        ViewFlipper viewFlipper = (ViewFlipper) findViewById(R.id.drawer_content_view_flipper);
+
+        // toolbar
+        setSupportActionBar(mToolbar);
+
+        // sync toggle and drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        android.support.design.widget.NavigationView navigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
+        // register listener to navigate view
         navigationView.setNavigationItemSelectedListener(this);
+
+        // config head
+        int headType = setHeadType();
+        if (headType == HEAD_NORMAL) {
+//            normalHead.setVisibility(View.VISIBLE);
+//            collapsingHead.setVisibility(View.GONE);
+//            viewFlipper.setDisplayedChild(HEAD_NORMAL);
+        } else if (headType == HEAD_COLLAPSING) {
+//            normalHead.setVisibility(View.GONE);
+//            collapsingHead.setVisibility(View.VISIBLE);
+//            viewFlipper.setDisplayedChild(HEAD_COLLAPSING);
+        }
+
+//        viewFlipper.setDisplayedChild(2);
+    }
+
+    protected int setHeadType() {
+        return HEAD_NORMAL;
     }
 
     @Override
@@ -84,23 +110,23 @@ public abstract class NavigationActivity extends BaseActivity implements
     }
 
     @Override
-    public void onBackPressed() {
-        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
-            mDrawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public <T extends Fragment> void showFragment(T fragment) {
         if (mCurrentFragment == null || !isSameFragment(fragment)) {
-            ActivityUtils.attachFragment(getSupportFragmentManager(), fragment, R.id.contentFrame);
+            ActivityUtils.attachFragment(getSupportFragmentManager(), fragment, R.id.content_frame);
             mCurrentFragment = fragment;
         }
     }
 
     private boolean isSameFragment(Fragment fragment) {
         return fragment.getClass().getName().equals(mCurrentFragment.getClass().getName());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
