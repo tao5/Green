@@ -22,7 +22,6 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
 
     private int flowStyle;
 
-
     public FlowAdapter(List<String> urls) {
         this.urls = urls;
         flowStyle = FlowStyleFactory.FLOW_STYLE_HEIGHT;
@@ -31,6 +30,7 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
     @Override
     public FlowHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_home_flow_item, parent, false);
+        //AnimationUtils.loadExplosionAnim((Activity) parent.getContext(), parent);
         return new FlowHolder(view);
     }
 
