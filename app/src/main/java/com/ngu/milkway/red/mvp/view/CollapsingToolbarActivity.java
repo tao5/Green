@@ -13,11 +13,6 @@ public abstract class CollapsingToolbarActivity extends NavigationActivity {
     }
 
     @Override
-    protected void initActivity() {
-        super.initActivity();
-    }
-
-    @Override
     protected int setHeadType() {
         return HEAD_COLLAPSING;
     }

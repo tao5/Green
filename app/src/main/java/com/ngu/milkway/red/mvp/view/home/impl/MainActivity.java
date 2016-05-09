@@ -1,15 +1,9 @@
 package com.ngu.milkway.red.mvp.view.home.impl;
 
-import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.mvp.presenter.home.impl.HomePresenterImpl;
-import com.ngu.milkway.red.mvp.view.NavigationActivity;
+import com.ngu.milkway.red.mvp.view.CollapsingToolbarActivity;
 
-public class MainActivity extends NavigationActivity {
-
-    @Override
-    protected int setContentView() {
-        return R.layout.activity_main_normal;
-    }
+public class MainActivity extends CollapsingToolbarActivity {
 
     @Override
     protected void initActivity() {

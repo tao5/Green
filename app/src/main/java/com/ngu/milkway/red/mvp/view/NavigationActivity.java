@@ -1,5 +1,7 @@
 package com.ngu.milkway.red.mvp.view;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -30,7 +32,9 @@ public abstract class NavigationActivity extends BaseActivity implements
     protected static final int HEAD_COLLAPSING = 1;
 
     @Override
-    protected void initActivity() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.drawer_content_fab);
         fab.setOnClickListener(new View.OnClickListener() {
