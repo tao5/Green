@@ -9,7 +9,6 @@
     tools:openDrawer="start">
 
     <include
-        android:id="@+id/drawer_content_head_collapsing"
         layout="@layout/drawer_content_collapsing"/>
 
     <android.support.design.widget.NavigationView

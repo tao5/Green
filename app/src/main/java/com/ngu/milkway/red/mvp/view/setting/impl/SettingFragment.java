@@ -3,6 +3,8 @@ package com.ngu.milkway.red.mvp.view.setting.impl;
 import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.mvp.presenter.BasePresenter;
 import com.ngu.milkway.red.mvp.view.BaseFragment;
+import com.ngu.milkway.red.mvp.view.CollapsingToolbarActivity;
+import com.ngu.milkway.red.mvp.view.NavigationActivity;
 import com.ngu.milkway.red.mvp.view.setting.SettingView;
 import com.ngu.milkway.red.utils.AnimationUtils;
 
@@ -19,6 +21,8 @@ public class SettingFragment extends BaseFragment implements SettingView {
     @Override
     protected void initFragment() {
         AnimationUtils.loadExplosionAnim(getActivity(), view.findViewById(R.id.my_image));
+        CollapsingToolbarActivity activity = (CollapsingToolbarActivity) getActivity();
+        activity.setHeadType(NavigationActivity.HEAD_NORMAL);
     }
 
     @Override

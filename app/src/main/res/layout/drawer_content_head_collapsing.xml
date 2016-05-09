@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.AppBarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_bar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/app_bar_height"
     android:fitsSystemWindows="true"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:showIn="@layout/drawer_content">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/toolbar_layout"
@@ -32,7 +30,7 @@
             app:layout_collapseMode="parallax"/>
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"

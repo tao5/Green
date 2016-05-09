@@ -10,6 +10,8 @@ import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.adapter.FlowAdapter;
 import com.ngu.milkway.red.mvp.presenter.home.HomePresenter;
 import com.ngu.milkway.red.mvp.view.BaseFragment;
+import com.ngu.milkway.red.mvp.view.CollapsingToolbarActivity;
+import com.ngu.milkway.red.mvp.view.NavigationActivity;
 import com.ngu.milkway.red.mvp.view.home.HomeView;
 
 import java.util.List;
@@ -39,6 +41,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initFragment() {
         imageFlow = (RecyclerView) view.findViewById(R.id.rv_home_image_flow);
         imageFlow.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
+        CollapsingToolbarActivity activity = (CollapsingToolbarActivity) getActivity();
+        activity.setHeadType(NavigationActivity.HEAD_COLLAPSING);
         mPresenter.prepareData();
     }
 

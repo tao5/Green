@@ -25,33 +25,44 @@ public abstract class NavigationActivity extends BaseActivity implements
         android.support.design.widget.NavigationView.OnNavigationItemSelectedListener, NavigationView {
 
     private Toolbar mToolbar;
+    private Toolbar mNormalToolbar;
+    private Toolbar mCollapseToolbar;
     private Fragment mCurrentFragment;
     private DrawerLayout mDrawer;
+    private android.support.design.widget.NavigationView mNavigationView;
 
-    protected static final int HEAD_NORMAL = 0;
-    protected static final int HEAD_COLLAPSING = 1;
+    public static final int HEAD_NORMAL = 0;
+    public static final int HEAD_COLLAPSING = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.drawer_content_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mNormalToolbar = (Toolbar) findViewById(R.id.normal_toolbar);
+        mCollapseToolbar = (Toolbar) findViewById(R.id.collapse_toolbar);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        android.support.design.widget.NavigationView navigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
-//        View normalHead = findViewById(R.id.drawer_content_head_normal);
-//        View collapsingHead = findViewById(R.id.drawer_content_head_collapsing);
-//        ViewFlipper viewFlipper = (ViewFlipper) findViewById(R.id.drawer_content_view_flipper);
+        mNavigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
 
+        // config tool bar and relation widget
+        setToolbar(setHeadType());
+
+        // init fab
+        initFab();
+
+        // register listener to navigate view
+        mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    protected void setToolbar(int headType) {
+        if (headType == HEAD_NORMAL) {
+            mToolbar = mNormalToolbar;
+        } else if (headType == HEAD_COLLAPSING) {
+            mToolbar = mCollapseToolbar;
+        }
+        initDrawer();
+    }
+
+    private void initDrawer() {
         // toolbar
         setSupportActionBar(mToolbar);
 
@@ -60,23 +71,17 @@ public abstract class NavigationActivity extends BaseActivity implements
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(toggle);
         toggle.syncState();
+    }
 
-        // register listener to navigate view
-        navigationView.setNavigationItemSelectedListener(this);
-
-        // config head
-        int headType = setHeadType();
-        if (headType == HEAD_NORMAL) {
-//            normalHead.setVisibility(View.VISIBLE);
-//            collapsingHead.setVisibility(View.GONE);
-//            viewFlipper.setDisplayedChild(HEAD_NORMAL);
-        } else if (headType == HEAD_COLLAPSING) {
-//            normalHead.setVisibility(View.GONE);
-//            collapsingHead.setVisibility(View.VISIBLE);
-//            viewFlipper.setDisplayedChild(HEAD_COLLAPSING);
-        }
-
-//        viewFlipper.setDisplayedChild(2);
+    private void initFab() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.drawer_content_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     protected int setHeadType() {
