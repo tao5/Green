@@ -21,7 +21,9 @@ public abstract class CollapsingToolbarActivity extends NavigationActivity {
         mNormalHead = findViewById(R.id.drawer_content_head_normal_);
     }
 
+    @Override
     public void setHeadType(int type) {
+        setToolbar(type);
         if (type == HEAD_COLLAPSING) {
             mCollapseHead.setVisibility(View.VISIBLE);
             mNormalHead.setVisibility(View.GONE);
@@ -29,7 +31,6 @@ public abstract class CollapsingToolbarActivity extends NavigationActivity {
             mCollapseHead.setVisibility(View.GONE);
             mNormalHead.setVisibility(View.VISIBLE);
         }
-        setToolbar(type);
     }
 
     @Override

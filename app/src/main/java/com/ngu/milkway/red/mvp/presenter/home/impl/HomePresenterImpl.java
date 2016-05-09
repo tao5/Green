@@ -1,6 +1,6 @@
 package com.ngu.milkway.red.mvp.presenter.home.impl;
 
-import com.ngu.milkway.red.GreenApi;
+import com.ngu.milkway.red.MeiziApi;
 import com.ngu.milkway.red.GreenRetrofit;
 import com.ngu.milkway.red.mvp.model.bean.Meizi;
 import com.ngu.milkway.red.mvp.presenter.home.HomePresenter;
@@ -35,8 +35,8 @@ public class HomePresenterImpl implements HomePresenter {
 
     @Override
     public void prepareData() {
-        GreenApi greenApi = GreenRetrofit.getInstance().getGreenApi();
-        greenApi.getMeiziData(4)
+        MeiziApi meiziApi = GreenRetrofit.getInstance().getMeiziApi();
+        meiziApi.getMeiziData(4)
                 .map(new Func1<Meizi, List<Meizi.MeiziDetail>>() {
                     @Override
                     public List<Meizi.MeiziDetail> call(Meizi meizi) {
@@ -67,7 +67,7 @@ public class HomePresenterImpl implements HomePresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        mHomeView.showSnackbar(e.getMessage());
+                        mHomeView.showSnackbarHint(e.getMessage());
                     }
 
                     @Override

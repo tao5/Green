@@ -36,6 +36,11 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initFragment();
 
+    protected void setHeadType(int headType) {
+        NavigationActivity activity = (NavigationActivity) getActivity();
+        activity.setHeadType(headType);
+    }
+
     /**
      * show option menu, show custom menu also should
      * override setMenuResource()

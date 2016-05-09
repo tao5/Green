@@ -1,9 +1,9 @@
 package com.ngu.milkway.red.mvp.view.home.impl;
 
 import com.ngu.milkway.red.mvp.presenter.home.impl.HomePresenterImpl;
-import com.ngu.milkway.red.mvp.view.CollapsingToolbarActivity;
+import com.ngu.milkway.red.mvp.view.NormalToolbarActivity;
 
-public class MainActivity extends CollapsingToolbarActivity {
+public class MainActivity extends NormalToolbarActivity {
 
     @Override
     protected void initActivity() {
@@ -11,7 +11,5 @@ public class MainActivity extends CollapsingToolbarActivity {
         new HomePresenterImpl(homeFragment);
         showFragment(homeFragment);
     }
-
-
 
 }

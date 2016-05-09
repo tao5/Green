@@ -29,7 +29,7 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
 
     @Override
     public FlowHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_home_flow_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_flow, parent, false);
         //AnimationUtils.loadExplosionAnim((Activity) parent.getContext(), parent);
         return new FlowHolder(view);
     }

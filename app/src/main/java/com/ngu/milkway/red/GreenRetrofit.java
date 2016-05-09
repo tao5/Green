@@ -9,24 +9,36 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class GreenRetrofit {
 
-    private GreenApi greenApi;
+    private MeiziApi meiziApi;
+    private WeatherApi weatherApi;
 
     private static GreenRetrofit retrofit = new GreenRetrofit();
 
     private GreenRetrofit() {
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit meiziRetrofit = new Retrofit.Builder()
                 .baseUrl("http://gank.io/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        greenApi = retrofit.create(GreenApi.class);
+        meiziApi = meiziRetrofit.create(MeiziApi.class);
+
+        Retrofit weatherRetrofit = new Retrofit.Builder()
+                .baseUrl("https://api.heweather.com/x3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+        weatherApi = weatherRetrofit.create(WeatherApi.class);
     }
 
     public static GreenRetrofit getInstance() {
         return retrofit;
     }
 
-    public GreenApi getGreenApi() {
-        return greenApi;
+    public MeiziApi getMeiziApi() {
+        return meiziApi;
+    }
+
+    public WeatherApi getWeatherApi() {
+        return weatherApi;
     }
 }

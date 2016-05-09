@@ -10,8 +10,6 @@ import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.adapter.FlowAdapter;
 import com.ngu.milkway.red.mvp.presenter.home.HomePresenter;
 import com.ngu.milkway.red.mvp.view.BaseFragment;
-import com.ngu.milkway.red.mvp.view.CollapsingToolbarActivity;
-import com.ngu.milkway.red.mvp.view.NavigationActivity;
 import com.ngu.milkway.red.mvp.view.home.HomeView;
 
 import java.util.List;
@@ -19,6 +17,7 @@ import java.util.List;
 import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_HEIGHT;
 import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_MIX;
 import static com.ngu.milkway.red.adapter.flowstyle.FlowStyleFactory.FLOW_STYLE_WIDTH;
+import static com.ngu.milkway.red.mvp.view.NavigationActivity.HEAD_NORMAL;
 import static com.ngu.milkway.red.utils.Red.checkNotNull;
 
 /**
@@ -41,8 +40,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected void initFragment() {
         imageFlow = (RecyclerView) view.findViewById(R.id.rv_home_image_flow);
         imageFlow.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
-        CollapsingToolbarActivity activity = (CollapsingToolbarActivity) getActivity();
-        activity.setHeadType(NavigationActivity.HEAD_COLLAPSING);
+        setHeadType(HEAD_NORMAL);
         mPresenter.prepareData();
     }
 
@@ -116,7 +114,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void showSnackbar(String info) {
+    public void showSnackbarHint(String info) {
         setSnackbar(info, Snackbar.LENGTH_LONG);
     }
 

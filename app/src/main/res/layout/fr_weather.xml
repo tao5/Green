@@ -5,7 +5,7 @@
     android:background="#005678">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_home_image_flow"
+        android:id="@+id/rv_weather_flow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="3dp" />

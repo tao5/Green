@@ -14,8 +14,10 @@ import android.view.View;
 
 import com.ngu.milkway.red.R;
 import com.ngu.milkway.red.mvp.presenter.home.impl.HomePresenterImpl;
+import com.ngu.milkway.red.mvp.presenter.weather.impl.WeatherPresenterImpl;
 import com.ngu.milkway.red.mvp.view.home.impl.HomeFragment;
 import com.ngu.milkway.red.mvp.view.setting.impl.SettingFragment;
+import com.ngu.milkway.red.mvp.view.weather.impl.WeatherFragment;
 import com.ngu.milkway.red.utils.ActivityUtils;
 
 /**
@@ -88,6 +90,8 @@ public abstract class NavigationActivity extends BaseActivity implements
         return HEAD_NORMAL;
     }
 
+    public abstract void setHeadType(int type);
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -100,15 +104,20 @@ public abstract class NavigationActivity extends BaseActivity implements
 
         } else if (id == R.id.nav_gallery) {
 
-            showFragment(new SettingFragment());
+            WeatherFragment weatherFragment = new WeatherFragment();
+            new WeatherPresenterImpl(weatherFragment);
+            showFragment(weatherFragment);
 
         } else if (id == R.id.nav_slideshow) {
+
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+
+            showFragment(new SettingFragment());
 
         }
 
