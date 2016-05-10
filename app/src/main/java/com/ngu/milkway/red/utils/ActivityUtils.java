@@ -10,8 +10,8 @@ import static com.ngu.milkway.red.utils.Red.checkNotNull;
  */
 public class ActivityUtils {
 
-    public static void attachFragment(FragmentManager fragmentManager,
-                                      Fragment fragment, int containerViewId) {
+    public static void loadFragment(FragmentManager fragmentManager,
+                                    Fragment fragment, int containerViewId) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         fragmentManager.beginTransaction().replace(containerViewId, fragment).commit();

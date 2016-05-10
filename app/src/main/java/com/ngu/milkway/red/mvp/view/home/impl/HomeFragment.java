@@ -57,7 +57,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     public void showImageFlow(List<String> urls) {
-        mFlowAdapter = new FlowAdapter(urls);
+        mFlowAdapter = new FlowAdapter(urls, getContext());
         imageFlow.setAdapter(mFlowAdapter);
     }
 

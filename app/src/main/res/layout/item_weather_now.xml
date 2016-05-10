@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_weather_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/type_one_sunny" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:paddingBottom="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="50sp"
+            android:id="@+id/tv_weather_now_current_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1111" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="18sp"
+                android:id="@+id/tv_weather_now_mix_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2222" />
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_weather_now_min_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3333" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="35dp"
+        android:paddingBottom="8dp"
+        android:layout_gravity="right|bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="12sp"
+            android:id="@+id/tv_weather_now_pm25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4444" />
+
+        <TextView
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_weather_now_aqi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5555" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

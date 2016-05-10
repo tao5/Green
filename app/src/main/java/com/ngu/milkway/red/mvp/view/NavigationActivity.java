@@ -2,6 +2,7 @@ package com.ngu.milkway.red.mvp.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ public abstract class NavigationActivity extends BaseActivity implements
     private Toolbar mCollapseToolbar;
     private Fragment mCurrentFragment;
     private DrawerLayout mDrawer;
+    private AppBarLayout mAppBarLayout;
     private android.support.design.widget.NavigationView mNavigationView;
 
     public static final int HEAD_NORMAL = 0;
@@ -43,6 +45,7 @@ public abstract class NavigationActivity extends BaseActivity implements
         mNormalToolbar = (Toolbar) findViewById(R.id.normal_toolbar);
         mCollapseToolbar = (Toolbar) findViewById(R.id.collapse_toolbar);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mAppBarLayout = (AppBarLayout) findViewById(R.id.collapse_app_bar);
         mNavigationView = (android.support.design.widget.NavigationView) findViewById(R.id.nav_view);
 
         // config tool bar and relation widget
@@ -60,6 +63,9 @@ public abstract class NavigationActivity extends BaseActivity implements
             mToolbar = mNormalToolbar;
         } else if (headType == HEAD_COLLAPSING) {
             mToolbar = mCollapseToolbar;
+        }
+        if (mAppBarLayout != null) {
+            mAppBarLayout.setExpanded(headType != HEAD_NORMAL);
         }
         initDrawer();
     }
@@ -130,7 +136,7 @@ public abstract class NavigationActivity extends BaseActivity implements
     @Override
     public <T extends Fragment> void showFragment(T fragment) {
         if (mCurrentFragment == null || !isSameFragment(fragment)) {
-            ActivityUtils.attachFragment(getSupportFragmentManager(), fragment, R.id.content_frame);
+            ActivityUtils.loadFragment(getSupportFragmentManager(), fragment, R.id.content_frame);
             mCurrentFragment = fragment;
         }
     }

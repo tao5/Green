@@ -1,5 +1,6 @@
 package com.ngu.milkway.red.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,14 +17,12 @@ import java.util.List;
 /**
  * Created by xt on 16/5/5.
  */
-public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
-
-    private List<String> urls;
+public class FlowAdapter extends BaseListAdapter<String ,FlowAdapter.FlowHolder> {
 
     private int flowStyle;
 
-    public FlowAdapter(List<String> urls) {
-        this.urls = urls;
+    public FlowAdapter(List<String> data, Context context) {
+        super(data, context);
         flowStyle = FlowStyleFactory.FLOW_STYLE_HEIGHT;
     }
 
@@ -36,7 +35,7 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
 
     @Override
     public void onBindViewHolder(FlowHolder holder, int position) {
-        Uri uri = Uri.parse(urls.get(position));
+        Uri uri = Uri.parse(data.get(position));
         // FlowStyleFactory.createFlowStyle(holder.draweeView, uri, flowStyle).setFlowStyle();
         new FlowStyleContext(holder.draweeView, uri, flowStyle).setFlowStyle();
     }
@@ -44,11 +43,6 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.FlowHolder> {
     public void setFlowStyle(int flowStyle) {
         this.flowStyle = flowStyle;
         notifyDataSetChanged();
-    }
-
-    @Override
-    public int getItemCount() {
-        return urls != null ? urls.size() : 0;
     }
 
     class FlowHolder extends RecyclerView.ViewHolder {

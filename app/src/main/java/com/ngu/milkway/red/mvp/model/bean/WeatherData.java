@@ -20,17 +20,24 @@ public class WeatherData {
      */
 
     @SerializedName("HeWeather data service 3.0")
-    private List<WeatherBean> weather;
+    private List<Weather> weather;
 
-    public List<WeatherBean> getWeather() {
+    public List<Weather> getWeather() {
         return weather;
     }
 
-    public void setWeather(List<WeatherBean> weather) {
+    public void setWeather(List<Weather> weather) {
         this.weather = weather;
     }
 
-    public static class WeatherBean {
+    @Override
+    public String toString() {
+        return "WeatherData{" +
+                "weather=" + weather +
+                '}';
+    }
+
+    public static class Weather {
         /**
          * city : {"aqi":"51","co":"1","no2":"56","o3":"16","pm10":"47","pm25":"51","qlty":"优","so2":"2"}
          */
@@ -151,6 +158,19 @@ public class WeatherData {
             this.hourly_forecast = hourly_forecast;
         }
 
+        @Override
+        public String toString() {
+            return "Weather{" +
+                    "aqi=" + aqi +
+                    ", basic=" + basic +
+                    ", now=" + now +
+                    ", status='" + status + '\'' +
+                    ", suggestion=" + suggestion +
+                    ", daily_forecast=" + daily_forecast +
+                    ", hourly_forecast=" + hourly_forecast +
+                    '}';
+        }
+
         public static class AqiBean {
             /**
              * aqi : 51
@@ -171,6 +191,13 @@ public class WeatherData {
 
             public void setCity(CityBean city) {
                 this.city = city;
+            }
+
+            @Override
+            public String toString() {
+                return "AqiBean{" +
+                        "city=" + city +
+                        '}';
             }
 
             public static class CityBean {
@@ -246,6 +273,20 @@ public class WeatherData {
                 public void setSo2(String so2) {
                     this.so2 = so2;
                 }
+
+                @Override
+                public String toString() {
+                    return "CityBean{" +
+                            "aqi='" + aqi + '\'' +
+                            ", co='" + co + '\'' +
+                            ", no2='" + no2 + '\'' +
+                            ", o3='" + o3 + '\'' +
+                            ", pm10='" + pm10 + '\'' +
+                            ", pm25='" + pm25 + '\'' +
+                            ", qlty='" + qlty + '\'' +
+                            ", so2='" + so2 + '\'' +
+                            '}';
+                }
             }
         }
 
@@ -310,8 +351,21 @@ public class WeatherData {
                 this.update = update;
             }
 
+            @Override
+            public String toString() {
+                return "BasicBean{" +
+                        "city='" + city + '\'' +
+                        ", cnty='" + cnty + '\'' +
+                        ", id='" + id + '\'' +
+                        ", lat='" + lat + '\'' +
+                        ", lon='" + lon + '\'' +
+                        ", update=" + update +
+                        '}';
+            }
+
             public static class UpdateBean {
                 private String loc;
+
                 private String utc;
 
                 public String getLoc() {
@@ -328,6 +382,14 @@ public class WeatherData {
 
                 public void setUtc(String utc) {
                     this.utc = utc;
+                }
+
+                @Override
+                public String toString() {
+                    return "UpdateBean{" +
+                            "loc='" + loc + '\'' +
+                            ", utc='" + utc + '\'' +
+                            '}';
                 }
             }
         }
@@ -418,6 +480,20 @@ public class WeatherData {
                 this.wind = wind;
             }
 
+            @Override
+            public String toString() {
+                return "NowBean{" +
+                        "cond=" + cond +
+                        ", fl='" + fl + '\'' +
+                        ", hum='" + hum + '\'' +
+                        ", pcpn='" + pcpn + '\'' +
+                        ", pres='" + pres + '\'' +
+                        ", tmp='" + tmp + '\'' +
+                        ", vis='" + vis + '\'' +
+                        ", wind=" + wind +
+                        '}';
+            }
+
             public static class CondBean {
                 private String code;
                 private String txt;
@@ -436,6 +512,14 @@ public class WeatherData {
 
                 public void setTxt(String txt) {
                     this.txt = txt;
+                }
+
+                @Override
+                public String toString() {
+                    return "CondBean{" +
+                            "code='" + code + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
                 }
             }
 
@@ -475,6 +559,16 @@ public class WeatherData {
 
                 public void setSpd(String spd) {
                     this.spd = spd;
+                }
+
+                @Override
+                public String toString() {
+                    return "WindBean{" +
+                            "deg='" + deg + '\'' +
+                            ", dir='" + dir + '\'' +
+                            ", sc='" + sc + '\'' +
+                            ", spd='" + spd + '\'' +
+                            '}';
                 }
             }
         }
@@ -579,6 +673,19 @@ public class WeatherData {
                 this.uv = uv;
             }
 
+            @Override
+            public String toString() {
+                return "SuggestionBean{" +
+                        "comf=" + comf +
+                        ", cw=" + cw +
+                        ", drsg=" + drsg +
+                        ", flu=" + flu +
+                        ", sport=" + sport +
+                        ", trav=" + trav +
+                        ", uv=" + uv +
+                        '}';
+            }
+
             public static class ComfBean {
                 private String brf;
                 private String txt;
@@ -597,6 +704,14 @@ public class WeatherData {
 
                 public void setTxt(String txt) {
                     this.txt = txt;
+                }
+
+                @Override
+                public String toString() {
+                    return "ComfBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
                 }
             }
 
@@ -619,6 +734,14 @@ public class WeatherData {
                 public void setTxt(String txt) {
                     this.txt = txt;
                 }
+
+                @Override
+                public String toString() {
+                    return "CwBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
+                }
             }
 
             public static class DrsgBean {
@@ -639,6 +762,14 @@ public class WeatherData {
 
                 public void setTxt(String txt) {
                     this.txt = txt;
+                }
+
+                @Override
+                public String toString() {
+                    return "DrsgBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
                 }
             }
 
@@ -661,6 +792,14 @@ public class WeatherData {
                 public void setTxt(String txt) {
                     this.txt = txt;
                 }
+
+                @Override
+                public String toString() {
+                    return "FluBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
+                }
             }
 
             public static class SportBean {
@@ -681,6 +820,14 @@ public class WeatherData {
 
                 public void setTxt(String txt) {
                     this.txt = txt;
+                }
+
+                @Override
+                public String toString() {
+                    return "SportBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
                 }
             }
 
@@ -703,6 +850,14 @@ public class WeatherData {
                 public void setTxt(String txt) {
                     this.txt = txt;
                 }
+
+                @Override
+                public String toString() {
+                    return "TravBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
+                }
             }
 
             public static class UvBean {
@@ -723,6 +878,14 @@ public class WeatherData {
 
                 public void setTxt(String txt) {
                     this.txt = txt;
+                }
+
+                @Override
+                public String toString() {
+                    return "UvBean{" +
+                            "brf='" + brf + '\'' +
+                            ", txt='" + txt + '\'' +
+                            '}';
                 }
             }
         }
@@ -843,6 +1006,22 @@ public class WeatherData {
                 this.wind = wind;
             }
 
+            @Override
+            public String toString() {
+                return "DailyForecastBean{" +
+                        "astro=" + astro +
+                        ", cond=" + cond +
+                        ", date='" + date + '\'' +
+                        ", hum='" + hum + '\'' +
+                        ", pcpn='" + pcpn + '\'' +
+                        ", pop='" + pop + '\'' +
+                        ", pres='" + pres + '\'' +
+                        ", tmp=" + tmp +
+                        ", vis='" + vis + '\'' +
+                        ", wind=" + wind +
+                        '}';
+            }
+
             public static class AstroBean {
                 private String sr;
                 private String ss;
@@ -861,6 +1040,14 @@ public class WeatherData {
 
                 public void setSs(String ss) {
                     this.ss = ss;
+                }
+
+                @Override
+                public String toString() {
+                    return "AstroBean{" +
+                            "sr='" + sr + '\'' +
+                            ", ss='" + ss + '\'' +
+                            '}';
                 }
             }
 
@@ -901,6 +1088,16 @@ public class WeatherData {
                 public void setTxt_n(String txt_n) {
                     this.txt_n = txt_n;
                 }
+
+                @Override
+                public String toString() {
+                    return "CondBean{" +
+                            "code_d='" + code_d + '\'' +
+                            ", code_n='" + code_n + '\'' +
+                            ", txt_d='" + txt_d + '\'' +
+                            ", txt_n='" + txt_n + '\'' +
+                            '}';
+                }
             }
 
             public static class TmpBean {
@@ -921,6 +1118,14 @@ public class WeatherData {
 
                 public void setMin(String min) {
                     this.min = min;
+                }
+
+                @Override
+                public String toString() {
+                    return "TmpBean{" +
+                            "max='" + max + '\'' +
+                            ", min='" + min + '\'' +
+                            '}';
                 }
             }
 
@@ -960,6 +1165,16 @@ public class WeatherData {
 
                 public void setSpd(String spd) {
                     this.spd = spd;
+                }
+
+                @Override
+                public String toString() {
+                    return "WindBean{" +
+                            "deg='" + deg + '\'' +
+                            ", dir='" + dir + '\'' +
+                            ", sc='" + sc + '\'' +
+                            ", spd='" + spd + '\'' +
+                            '}';
                 }
             }
         }
@@ -1027,6 +1242,18 @@ public class WeatherData {
                 this.wind = wind;
             }
 
+            @Override
+            public String toString() {
+                return "HourlyForecastBean{" +
+                        "date='" + date + '\'' +
+                        ", hum='" + hum + '\'' +
+                        ", pop='" + pop + '\'' +
+                        ", pres='" + pres + '\'' +
+                        ", tmp='" + tmp + '\'' +
+                        ", wind=" + wind +
+                        '}';
+            }
+
             public static class WindBean {
                 private String deg;
                 private String dir;
@@ -1063,6 +1290,16 @@ public class WeatherData {
 
                 public void setSpd(String spd) {
                     this.spd = spd;
+                }
+
+                @Override
+                public String toString() {
+                    return "WindBean{" +
+                            "deg='" + deg + '\'' +
+                            ", dir='" + dir + '\'' +
+                            ", sc='" + sc + '\'' +
+                            ", spd='" + spd + '\'' +
+                            '}';
                 }
             }
         }

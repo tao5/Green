@@ -3,9 +3,17 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+
     <string name="home_width">width</string>
     <string name="home_height">height</string>
     <string name="home_mix">mix</string>
+
+    <string name="temp">%s℃</string>
+    <string name="max_temp">↑ %s °</string>
+    <string name="min_temp">↓ %s °</string>
+    <string name="pm25">PM25： %s</string>
+    <string name="aqi">空气质量： %s</string>
+
+
 </resources>
